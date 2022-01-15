@@ -188,8 +188,7 @@ class _RappiProductItem extends StatelessWidget {
                 height: productHight,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  // FIXME: NO ME FUNCIONÓ CON NETWORD IMAGE
-                  child: Image.asset(
+                  child: Image.network(
                     product!.image,
                     width: productHight,
                     fit: BoxFit.cover,
