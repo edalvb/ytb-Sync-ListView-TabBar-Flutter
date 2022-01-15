@@ -20,11 +20,13 @@ class RappiBLoC with ChangeNotifier {
       final category = rappiCategories[i];
 
       if (i > 0) {
-        offsetFrom += rappiCategories[i - 1].products.length * productHight;
+        offsetFrom += rappiCategories[i - 1].products.length * productHight +
+            categoryHight * i;
       }
 
       if (i < rappiCategories.length - 1) {
-        offsetTo += rappiCategories[i + 1].products.length * productHight;
+        offsetTo += rappiCategories[i + 1].products.length * productHight +
+            categoryHight * i;
       } else {
         offsetTo = double.infinity;
       }

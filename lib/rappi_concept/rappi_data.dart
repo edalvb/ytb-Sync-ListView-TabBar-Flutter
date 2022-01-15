@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class RappiCategory {
   const RappiCategory({
     required this.name,
@@ -20,121 +22,37 @@ class RappiProduct {
   final String image;
 }
 
-const rappiCategories = [
-  RappiCategory(
-    name: 'Categoría 1',
-    products: [
-      RappiProduct(
-          name: 'Silim Lights',
-          description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting',
-          price: 26.50,
-          image: "https://random.imagecdn.app/500/500"),
-      RappiProduct(
-          name: 'Silim Lights 1',
-          description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting',
-          price: 26.50,
-          image: "https://random.imagecdn.app/500/500"),
-      RappiProduct(
-          name: 'Silim Lights 2',
-          description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting',
-          price: 26.50,
-          image: "https://random.imagecdn.app/500/500"),
-      RappiProduct(
-          name: 'Silim Lights 3',
-          description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting',
-          price: 26.50,
-          image: "https://random.imagecdn.app/500/500"),
-    ],
-  ),
-  RappiCategory(
-    name: 'Categoría 2',
-    products: [
-      RappiProduct(
-          name: 'Silim Lights',
-          description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting',
-          price: 26.50,
-          image: "https://random.imagecdn.app/500/500"),
-      RappiProduct(
-          name: 'Silim Lights 1',
-          description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting',
-          price: 26.50,
-          image: "https://random.imagecdn.app/500/500"),
-      RappiProduct(
-          name: 'Silim Lights 2',
-          description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting',
-          price: 26.50,
-          image: "https://random.imagecdn.app/500/500"),
-      RappiProduct(
-          name: 'Silim Lights 3',
-          description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting',
-          price: 26.50,
-          image: "https://random.imagecdn.app/500/500"),
-    ],
-  ),
-  RappiCategory(
-    name: 'Categoría 3',
-    products: [
-      RappiProduct(
-          name: 'Silim Lights',
-          description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting',
-          price: 26.50,
-          image: "https://random.imagecdn.app/500/500"),
-      RappiProduct(
-          name: 'Silim Lights 1',
-          description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting',
-          price: 26.50,
-          image: "https://random.imagecdn.app/500/500"),
-      RappiProduct(
-          name: 'Silim Lights 2',
-          description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting',
-          price: 26.50,
-          image: "https://random.imagecdn.app/500/500"),
-      RappiProduct(
-          name: 'Silim Lights 3',
-          description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting',
-          price: 26.50,
-          image: "https://random.imagecdn.app/500/500"),
-    ],
-  ),
-  RappiCategory(
-    name: 'Categoría 4',
-    products: [
-      RappiProduct(
-          name: 'Silim Lights',
-          description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting',
-          price: 26.50,
-          image: "https://random.imagecdn.app/500/500"),
-      RappiProduct(
-          name: 'Silim Lights 1',
-          description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting',
-          price: 26.50,
-          image: "https://random.imagecdn.app/500/500"),
-      RappiProduct(
-          name: 'Silim Lights 2',
-          description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting',
-          price: 26.50,
-          image: "https://random.imagecdn.app/500/500"),
-      RappiProduct(
-          name: 'Silim Lights 3',
-          description:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting',
-          price: 26.50,
-          image: "https://random.imagecdn.app/500/500"),
-    ],
-  )
-];
+List<RappiCategory> rappiCategories = generateCatProd();
+
+generateCatProd({int? cat, int? prod}) {
+  Random random = Random();
+
+  int rCat = cat ?? random.nextInt(10) + 10;
+
+  List<RappiCategory> categories = [];
+  int prodNum = 0;
+
+  for (int ic = 0; ic < rCat; ic++) {
+    int rPro = prod ?? random.nextInt(10) + 3;
+
+    List<RappiProduct> products = [];
+
+    for (int ip = 0; ip < rPro; ip++) {
+      prodNum++;
+
+      products.add(RappiProduct(
+          name: 'Producto $prodNum',
+          description: 'Producto $prodNum de la categoría ${ic + 1}',
+          price: random.nextDouble() * 1000,
+          image:
+              "https://random.imagecdn.app/${prodNum + 200}/${prodNum + 200}"));
+    }
+
+    categories.add(RappiCategory(
+      name: 'Categoría ${ic + 1}',
+      products: products,
+    ));
+  }
+
+  return categories;
+}

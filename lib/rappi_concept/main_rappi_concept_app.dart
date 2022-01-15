@@ -152,7 +152,7 @@ class _RappiCategoryItem extends StatelessWidget {
     return Container(
       height: categoryHight,
       alignment: Alignment.centerLeft,
-      color: Colors.white,
+      color: Colors.transparent,
       child: Text(
         category!.name,
         style: const TextStyle(
