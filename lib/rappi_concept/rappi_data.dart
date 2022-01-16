@@ -22,7 +22,8 @@ class RappiProduct {
   final String image;
 }
 
-List<RappiCategory> rappiCategories = generateCatProd();
+/// Lista total de categorías con sus productos que se usará en la app.
+final List<RappiCategory> rappiCategories = generateCatProd();
 
 generateCatProd({int? cat, int? prod}) {
   Random random = Random();

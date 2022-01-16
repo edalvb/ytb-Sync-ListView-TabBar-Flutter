@@ -80,7 +80,7 @@ class _RappiConceptState extends State<_RappiConcept>
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: 60,
                 child: TabBar(
                   controller: _bloc.tabController,
@@ -126,6 +126,7 @@ class _RappiTabWidget extends StatelessWidget {
     return Opacity(
       opacity: selected ? 1 : 0.5,
       child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
         elevation: selected ? 6 : 0,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
